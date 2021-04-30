@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET OS</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            background-color: #eeeef2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a.button {
+            padding: 16px 32px;
+            text-decoration: none;
+            border-radius: 999px;
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            background-color: #8b3339;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        a.button:hover {
+            background-color: #54000f;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <a class="button" id="button">Schreiben Sie uns</a>
+
+
+
+    <!-- Get OS -->
+    <script>
+        const button = document.getElementById('button');
+        const hrefNormal = `mailto:noreply@askwest.com?&amp;subject=Anfrage%20an%20WEST%20in%20Hamburg%20&amp;body=
+——————%0d>>Antworten%20Sie%20bitte%20OBERHALB%20diese%20Zeile,%20falls%20diese%20Daten%20nicht%20richtig%20angezeigt%20werden%0d%0d***WICHTIG***%20Ändern%20Sie%20bitte%20vor%20dem%20Versenden%20den%20Empfänger%20in%20web%20(a)%20…….%20um.%20***WICHTIG***%0d
+——————%0d%0d%0dBitte%20teilen%20Sie%20uns%20mit,%20an%20welchen%20Produkten%20Sie%20interessiert%20sind%20(einfach%20die%20Inhalte%20löschen,%20zu%20denen%20Sie%20keine%20Infos%20erhalten%20möchten).%20Falls%20Sie%20eine%20E-Mail-Signatur%20haben,%20entnehmen%20wir%20dieser%20gerne%20Ihre%20Adressdaten.%0d%0dProduktinteresse:%0dRFID%20Transponder%0dRFID%20u.%20andere%20Plastikarten%0dAusweiszubehör%0dWir%20sind%20OEM%20oder%20Systemhaus%20(falls%20zutreffend)%0dWir%20sind%20bereits%20Kunde%0d%0dNotizen:%0d(Welches%20Ziel%20möchten%20Sie%20erreichen?%20Gemeinsam%20erarbeiten%20wir%20den%20richtigen%20maßgeschneiderten%20Plan%20dafür.)%0d%0d*%20Frau%20oder%20Herr%0d%0dTitel%0d%0dVorname%0d%0d*%20Name%0d%0dFunktion%0d%0d*%20Firma%20od.%20Organisation%20(WEST%20liefert%20nicht%20an%20Privatpersonen)%0d%0dTelefon%20(Optional%20aber%20nützlich)%0d%0dIch%20bin%20damit%20einverstanden,%20dass%20Sie%20mich%20auch%20in%20Zukunft%20informieren.%20Ich%20kann%20mich%20jederzeit%20abmelden.%20WEST%20gibt%20Ihre%20Daten%20nicht%20weiter%20und%20sendet%20keinen%20Spam.%20Für%20uns%20ist%20es%20zwar%20selbstverständlich,%20aber%20leider%20schützen%20viele%20andere%20Unternehmen%20Ihre%20Daten%20nicht%20so%20sorgfältig.%0d`;
+
+        function getOS() {
+            let userAgent = window.navigator.userAgent,
+                platform = window.navigator.platform,
+                macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+                windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+                iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+                os = null;
+
+            if (macosPlatforms.indexOf(platform) !== -1) {
+                os = 'Mac OS';
+                button.setAttribute("href", hrefNormal);
+                console.log(os);
+            } else if (iosPlatforms.indexOf(platform) !== -1) {
+                os = 'iOS';
+                button.setAttribute("href", hrefNormal);
+                console.log(os);
+            } else if (windowsPlatforms.indexOf(platform) !== -1) {
+                os = 'Windows';
+                button.setAttribute("href", hrefNormal);
+                console.log(os);
+            } else if (/Android/.test(userAgent)) {
+                os = 'Android';
+                button.setAttribute("href", hrefNormal);
+                console.log(os);
+            } else if (!os && /Linux/.test(platform)) {
+                os = 'Linux';
+                button.setAttribute("href", hrefNormal);
+                console.log(os);
+            }
+
+            return os;
+        }
+
+        getOS();
+    </script>
+
+</body>
+
+</html>
